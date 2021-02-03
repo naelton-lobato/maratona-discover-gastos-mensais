@@ -1,0 +1,9 @@
+{
+    "workbench.editorAssociations": [
+    
+    ],
+    "git.allowForcePush": true,
+    "git.allowNoVerifyCommit": true,
+    "git.autofetch": true,
+    "git.alwaysShowStagedChangesResourceGroup": true
+}

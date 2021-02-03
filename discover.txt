@@ -1,0 +1,78 @@
+ambiente dev de outro mundo
+ -- preparar seu ambiente OK
+
+guia estelar de programação ok
+----------------------------------------
+
+
+
+	REVISÃO
+HTML
+-- o guia estelar de HTML
+-- HTML que faz sentido para todos
+
+CSS
+-- o guia estelar de CSS
+-- nem tudo são pixels
+-- uma caixa dentro da outra
+-- app bonito até nos textos
+
+GUIA ESTELAR DE HTTP
+-- entendendo
+	visão geral
+	visualizando a comunicação
+-- conceitos (com exceção da aula de proxies)
+-- uri (com exceção da aula de URN)
+
+
+
+
+ctrl + b = abrir e fecha os diretorios
+alt + z = ativar e desativa as quebras de linhas
+
+
+alt + shift + seta para baixoreplicar 
+
+
+!important = acima de todos no css
+
+
+width: min(90vw, 800px) // vai considerar sempre a menor
+
+
+---------------Aula02--------------
+
+Estudar 
+HTML
+- posso ver e ouvir o HTML
+- formularios de outro planeta
+
+CSS
+- nem so de classes ou ID'S
+
+
+PARA ACOMPANHAR A PROXIMA AULA 
+- O GUIA ESTELAR DE JAVASCRIPT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
