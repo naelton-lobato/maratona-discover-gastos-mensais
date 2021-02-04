@@ -15,30 +15,18 @@ const Modal = {
 // depois eu preciso somar as saídas
 // remover das entradas as saídas
 // assim, eu terei o total
+const Storage = {
+    get(){
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
+    }, 
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions", 
+        JSON.stringify(transactions))
+    }
+}
 
 const Transaction = {
-    all: [
-        {
-            description: 'Luz',
-            amount: -50001,
-            date: '23/01/2021',
-        }, 
-        {
-            description: 'Website',
-            amount: 500000,
-            date: '23/01/2021',
-        }, 
-        {
-            description: 'Internet',
-            amount: -20012,
-            date: '23/01/2021',
-        }, 
-        {
-            description: 'App',
-            amount: 200000,
-            date: '23/01/2021',
-        }
-    ],
+    all: Storage.get(),
 
     add(transaction){
         Transaction.all.push(transaction)
@@ -91,18 +79,18 @@ const Transaction = {
 }
 
 // subtituir os dados do HTML COM OS DADOS DO JS
-
 const DOM = {
     transactionsContainer: document.querySelector('#data-table tbody'),
 
     addTransaction(transaction, index){
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
+        tr.dataset.index = index
         
         DOM.transactionsContainer.appendChild(tr)
     },
 
-    innerHTMLTransaction(transaction){
+    innerHTMLTransaction(transaction, index){
         const CSSclass = transaction.amount > 0 ? "income" : "expense"
 
         const amount =  Utils.formatCurrency(transaction.amount)
@@ -112,7 +100,7 @@ const DOM = {
             <td class="${CSSclass}">${amount}</td>
             <td class="date">${transaction.date}</td>
             <td>
-                <img src="./assets/minus.svg" alt="Remover transação" srcset="">
+                <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
             </td>
         `
         return html
@@ -137,6 +125,7 @@ const DOM = {
     }
 }
 
+// Formatar os dados
 const Utils = {
     formatAmount (value) {
         value = Number(value) * 100 //Number(value.replace(/\,\./g, ""))*100
@@ -163,6 +152,7 @@ const Utils = {
     }
 }
 
+// obtendo os dados do formulario
 const Form = {
     description: document.querySelector('input#description'),///
     amount: document.querySelector('input#amount'),///
@@ -230,8 +220,7 @@ const Form = {
             //App.reload()  ja temos um App.reload no Transaction.add
         } catch(error){
             alert(error.message)
-        }
-        
+        } 
     }
 }
 
@@ -241,13 +230,15 @@ const App = {
         for(let i=0; i<3; i++){
         console.log(i)
         }*/
-        Transaction.all.forEach(transaction => {
-            DOM.addTransaction(transaction)
+        Transaction.all.forEach(function(transaction, index) {
+            DOM.addTransaction(transaction, index)
         })
 
         DOM.updateBalance() //chamando a funcação
 
+        Storage.set(Transaction.all)  
     },
+    
     reload() {
         DOM.clearTransactions()
         App.init()
