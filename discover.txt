@@ -58,6 +58,17 @@ PARA ACOMPANHAR A PROXIMA AULA
 ---------------aula 03--------------------
 toogle-pesquisar depois
 
+Assistir
+#REVISAO
+	O guia estelar de js
+
+#ASSISTIR
+	o guia estelar de git
+	o guia estelar de github
+	pilotando com o DOM
+	
+#COLOCAR O COD FINAL NO GITHUB
+
 [
         {
             description: 'Luz',
